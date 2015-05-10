@@ -1,0 +1,404 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:Enums="clr-namespace:SDTDomainModel.Enums;assembly=SDTDomainModel"   
+             xmlns:converts="clr-namespace:SDTPresentation.Converter"
+             xmlns:local="clr-namespace:SDTPresentation.View" x:Class="SDTPresentation.View.SeparatorProcessInformationView"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <converts:BinaryImageConverter x:Key="imgConverter"/>
+        <converts:DoubleNullableConverter x:Key="doubleNullableConverter"/>
+    </UserControl.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Width="auto" Height="645">
+        <Grid Width="1200" Height="645">
+            <Grid.Resources>
+                <Style TargetType="{x:Type ToolTip}">
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="Background" Value="#8B1A1A"/>
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="BorderBrush"  Value="White" />
+                    <Setter Property="HorizontalOffset" Value="20" />
+                </Style>
+            </Grid.Resources>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="450"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Path Grid.Column="1" Data="M20,52 L991,52" Fill="#FFF4F4F5" Height="1" Margin="0,0,8,0" Stretch="Fill" Stroke="#FFC2C2C2" VerticalAlignment="Bottom"/>
+            <TextBlock Grid.Column="1" Margin="0,0,0,1" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Bottom" FontWeight="Bold" HorizontalAlignment="Left" Width="296" Height="30"><Run Language="pt-br" Text="Process Information"/></TextBlock>
+
+            <TextBlock Grid.Column="1" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" Height="17" VerticalAlignment="Top" HorizontalAlignment="Left" Width="136" Margin="81,4,0,0" Grid.Row="2"><Run Language="pt-br" Text="Pressure"/></TextBlock>
+            <TextBox Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Pressure, UpdateSourceTrigger=LostFocus}" Foreground="#CC373737" FontSize="13.333" Margin="81,21,0,25" HorizontalAlignment="Left" Width="132" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="218,25,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding PressureUnitCbx}" VerticalAlignment="Top" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="51" RenderTransformOrigin="0.51,0.188"/>
+
+            <TextBlock Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" Height="16" VerticalAlignment="Top" Margin="2,4,0,0" HorizontalAlignment="Left" Width="74"><Run Language="pt-br" Text="Unit"/></TextBlock>
+            <ComboBox x:Name="comboboxPressureUnit" ItemsSource="{Binding PressureUnitCombobox}" SelectedValue="{Binding PressureUnitCbx}" FontSize="16" Grid.Column="1" Margin="0,20,0,25" Grid.Row="2" HorizontalAlignment="Left" Width="76" Height="25"/>
+
+            <TextBlock Grid.Column="1" Margin="377,3,0,0" Grid.Row="2" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" Height="17" VerticalAlignment="Top" HorizontalAlignment="Left" Width="136"><Run Language="pt-br" Text="Temperature"/></TextBlock>
+            <TextBox Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Temperature, UpdateSourceTrigger=LostFocus}" Foreground="#CC373737" FontSize="13.333" Margin="377,20,0,25" HorizontalAlignment="Left" TextAlignment="Right" Width="132" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" Height="25">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="514,25,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding TemperatureUnitCbx}" VerticalAlignment="Top" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="51" RenderTransformOrigin="0.51,0.188"/>
+
+            <TextBlock Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="82" Margin="295,3,0,0"><Run Language="pt-br" Text="Unit"/></TextBlock>
+            <ComboBox ItemsSource="{Binding TemperatureUnitCombobox}" SelectedValue="{Binding TemperatureUnitCbx}" FontSize="16" Grid.Column="1" Margin="296,20,0,25" Grid.Row="2" HorizontalAlignment="Left" Width="76" Height="25"/>
+
+            <Grid Grid.Column="1" Grid.Row="3" Margin="0,25,361,-25" Visibility="{Binding VisibilityGrid1}" Width="800" Height="450">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FF919191" Grid.Row="2" Margin="0,0,0,29"/>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FFD9D9D9"/>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FFD9D9D9" Grid.Row="5" HorizontalAlignment="Left" Width="800"/>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FFD9D9D9" Grid.Row="10" Margin="0,0,0.333,0"/>
+                <TextBlock Grid.Row="1" ToolTip="Mass Flow Rate" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Height="25" Margin="0,2,0,0"><Run Language="pt-br" Text="W"/><Run Language="pt-br" Text="v"/></TextBlock>
+                <TextBlock Grid.Row="2" ToolTip="Vapor Mass Density" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"><Run Language="pt-br" Text="ρ"/><Run Language="pt-br" Text="v"/></TextBlock>
+                <TextBlock Grid.Row="3" ToolTip="Vapor Viscosity" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"><Run Language="pt-br" Text="μ"/><Run Language="pt-br" Text="v"/></TextBlock>
+                <TextBlock Grid.Row="4" ToolTip="Vapor Molecular Weight" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"><Run Language="pt-br" Text="MW"/><Run Language="pt-br" Text="v"/></TextBlock>
+                <TextBlock Grid.Row="6" ToolTip="HC Mass Flow Rate" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"><Run Language="pt-br" Text="W"/><Run Language="pt-br" Text="HC"/></TextBlock>
+                <TextBlock Grid.Row="7" ToolTip="HC Mass Density" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"><Run Language="pt-br" Text="ρ"/><Run Language="pt-br" Text="HC"/></TextBlock>
+                <TextBlock Grid.Row="8" ToolTip="HC Viscosity" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"><Run Language="pt-br" Text="μ"/><Run Language="pt-br" Text="HC"/></TextBlock>
+                <TextBlock Grid.Row="9" ToolTip="HC Surface Tension" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"><Run Language="pt-br" Text="σ"/><Run Language="pt-br" Text="HC"/></TextBlock>
+                <TextBlock Grid.Row="11" ToolTip="Water Mass Flow Rate" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"><Run Language="pt-br" Text="Ww"/></TextBlock>
+                <TextBlock Grid.Row="12" ToolTip="Water Mass Density" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"><Run Language="pt-br" Text="ρ"/><Run Language="pt-br" Text="w"/></TextBlock>
+                <TextBlock Grid.Row="13" ToolTip="Water Viscosity" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="14" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"><Run Language="pt-br" Text="μ"/><Run Language="pt-br" Text="w"/></TextBlock>
+                <TextBlock Grid.Row="14" ToolTip="Water Surface Tension" TextWrapping="Wrap" Foreground="#FF545557" FontWeight="Bold" FontSize="16" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Height="26" Margin="0,1,0,0"><Run FontSize="21.333" Language="pt-br" Text="σ"/><Run FontSize="13.333" Language="pt-br" Text="w"/><LineBreak/><Run FontSize="13.333" Language="pt-br" Text=""/></TextBlock>
+                <Grid x:Name="gridView1" Grid.Column="2" Grid.RowSpan="15" IsEnabled="{Binding IsEnabledGrid1}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding WvCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}"  Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding PvCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding UvCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding MWvCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="6" TextWrapping="Wrap" Text="{Binding WhcCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="7" TextWrapping="Wrap" Text="{Binding PhcCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="8" TextWrapping="Wrap" Text="{Binding UhcCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="9" TextWrapping="Wrap" Text="{Binding OhcCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="11" TextWrapping="Wrap" Text="{Binding WwCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="12" TextWrapping="Wrap" Text="{Binding PwCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="13" TextWrapping="Wrap" Text="{Binding UwCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="14" TextWrapping="Wrap" Text="{Binding OwCase1, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <!--<CheckBox x:Name="chkCase1"  Visibility="{Binding VisibilityChk1}" IsChecked="{Binding IsCheckedChk1}" Content="Case 1" Margin="21,-23,39,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,-1.273"/>-->
+                </Grid>
+
+                <Grid x:Name="gridView2" Grid.Column="3" Grid.RowSpan="15" Visibility="{Binding VisibilityGrid2}" IsEnabled="{Binding IsEnabledGrid2}" Margin="0,1,0,-1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding WvCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding PvCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding UvCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding MWvCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="6" TextWrapping="Wrap" Text="{Binding WhcCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="7" TextWrapping="Wrap" Text="{Binding PhcCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="8" TextWrapping="Wrap" Text="{Binding UhcCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="9" TextWrapping="Wrap" Text="{Binding OhcCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="11" TextWrapping="Wrap" Text="{Binding WwCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="12" TextWrapping="Wrap" Text="{Binding PwCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="13" TextWrapping="Wrap" Text="{Binding UwCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="14" TextWrapping="Wrap" Text="{Binding OwCase2, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <!--<CheckBox x:Name="chkCase2"  Visibility="{Binding VisibilityChk2}" IsChecked="{Binding IsCheckedChk2}" Content="Case 2" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>-->
+                </Grid>
+
+                <Grid x:Name="gridView3" Visibility="{Binding VisibilityGrid3}" IsEnabled="{Binding IsEnabledGrid3}" Grid.Column="4" Grid.RowSpan="15" Margin="0,0.585,0,-0.585">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding WvCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding PvCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding UvCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding MWvCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="6" TextWrapping="Wrap" Text="{Binding WhcCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="7" TextWrapping="Wrap" Text="{Binding PhcCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="8" TextWrapping="Wrap" Text="{Binding UhcCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="9" TextWrapping="Wrap" Text="{Binding OhcCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="11" TextWrapping="Wrap" Text="{Binding WwCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="12" TextWrapping="Wrap" Text="{Binding PwCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="13" TextWrapping="Wrap" Text="{Binding UwCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="14" TextWrapping="Wrap" Text="{Binding OwCase3, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+
+
+                    <!--<CheckBox x:Name="chkCase3"  Visibility="{Binding VisibilityChk3}" IsChecked="{Binding IsCheckedChk3}" Content="Case 3" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>-->
+                </Grid>
+
+                <Grid x:Name="gridView4" Visibility="{Binding VisibilityGrid4}" IsEnabled="{Binding IsEnabledGrid4}" Grid.Column="5" Grid.RowSpan="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding WvCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding PvCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding UvCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding MWvCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="6" TextWrapping="Wrap" Text="{Binding WhcCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="7" TextWrapping="Wrap" Text="{Binding PhcCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="8" TextWrapping="Wrap" Text="{Binding UhcCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="9" TextWrapping="Wrap" Text="{Binding OhcCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="11" TextWrapping="Wrap" Text="{Binding WwCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="12" TextWrapping="Wrap" Text="{Binding PwCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="13" TextWrapping="Wrap" Text="{Binding UwCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="14" TextWrapping="Wrap" Text="{Binding OwCase4, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+
+                    <!--<CheckBox x:Name="chkCase4"  Visibility="{Binding VisibilityChk4}" IsChecked="{Binding IsCheckedChk4}" Content="Case 4" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>-->
+                </Grid>
+
+                <Grid x:Name="gridView5" Visibility="{Binding VisibilityGrid5}" IsEnabled="{Binding IsEnabledGrid5}" Grid.Column="6" Grid.RowSpan="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding WvCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding PvCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding UvCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding MWvCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" BorderBrush="#FF9E9E9E" FontSize="11"/>
+                    <TextBox Margin="0" Grid.Row="6" TextWrapping="Wrap" Text="{Binding WhcCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" FontSize="11" BorderBrush="#FF9E9E9E"/>
+                    <TextBox Margin="0" Grid.Row="7" TextWrapping="Wrap" Text="{Binding PhcCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" FontSize="11" BorderBrush="#FF9E9E9E"/>
+                    <TextBox Margin="0" Grid.Row="8" TextWrapping="Wrap" Text="{Binding UhcCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" FontSize="11" BorderBrush="#FF9E9E9E"/>
+                    <TextBox Margin="0" Grid.Row="9" TextWrapping="Wrap" Text="{Binding OhcCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" FontSize="11" BorderBrush="#FF9E9E9E"/>
+                    <TextBox Margin="0" Grid.Row="11" TextWrapping="Wrap" Text="{Binding WwCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" FontSize="11" BorderBrush="#FF9E9E9E"/>
+                    <TextBox Margin="0" Grid.Row="12" TextWrapping="Wrap" Text="{Binding PwCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" FontSize="11" BorderBrush="#FF9E9E9E"/>
+                    <TextBox Margin="0" Grid.Row="13" TextWrapping="Wrap" Text="{Binding UwCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" FontSize="11" BorderBrush="#FF9E9E9E"/>
+                    <TextBox Margin="0" Grid.Row="14" TextWrapping="Wrap" Text="{Binding OwCase5, Converter={StaticResource doubleNullableConverter}, UpdateSourceTrigger=LostFocus}" Width="80" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,0,7,0" TextAlignment="Center" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" FontSize="10">
+                        <TextBox.BorderBrush>
+                            <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                                <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                                <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                                <GradientStop Color="#FF9E9E9E" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TextBox.BorderBrush>
+                    </TextBox>
+                    <!--<CheckBox x:Name="chkCase5"  Visibility="{Binding VisibilityChk5}" IsChecked="{Binding IsCheckedChk5}" Content="Case 5" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>-->
+                </Grid>
+
+                <Grid x:Name="gridView6" Grid.Column="1" Grid.RowSpan="15" Margin="0,0,0,3" HorizontalAlignment="Right" Width="120">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <ComboBox ItemsSource="{Binding MassFlowRateUnitCombobox}" SelectedValue="{Binding WvUnit}" Margin="0" Grid.Row="1" Height="20" Padding="1,0,7,0" FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding DensityUnityCombobox}" SelectedValue="{Binding PvUnit}" Margin="0,5,0,2" Grid.Row="2" Height="20" Padding="1,0,7,0" FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding ViscosityUnityCombobox}" SelectedValue="{Binding UvUnit}" Margin="0,3,0,4" Grid.Row="3" Height="20" Padding="1,0,7,0"  FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding MolecularWeightUnitCombobox}" SelectedValue="{Binding MWvUnit}" Margin="0,0,0,6" Grid.Row="4" Height="20" Padding="1,0,7,0" SelectionChanged="ComboBox_SelectionChanged"  FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding MassFlowRateUnitCombobox}" SelectedValue="{Binding WhcUnit}" Margin="0" Grid.Row="6" Height="20" Padding="1,0,7,0"  FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding DensityUnityCombobox}" SelectedValue="{Binding PhcUnit}" Margin="0" Grid.Row="7" Height="20" Padding="1,0,7,0"  FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding ViscosityUnityCombobox}" SelectedValue="{Binding UhcUnit}" Margin="0" Grid.Row="8" Height="20" Padding="1,0,7,0"  FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding SurfaceTensionUnitCombobox}" SelectedValue="{Binding OhcUnit}" Margin="0" Grid.Row="9" Height="20" Padding="1,0,7,0"  FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding MassFlowRateUnitCombobox}" SelectedValue="{Binding WwUnit}" Margin="0,0,0,1" Grid.Row="11" Height="20" Padding="1,0,7,0"  FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding DensityUnityCombobox}" SelectedValue="{Binding PwUnit}" Margin="0" Grid.Row="12" Height="20" Padding="1,0,7,0"  FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding ViscosityUnityCombobox}" SelectedValue="{Binding UwUnit}" Margin="0" Grid.Row="13" Height="20" Padding="1,0,7,0"  FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding SurfaceTensionUnitCombobox}" SelectedValue="{Binding OwUnit}" Margin="0" Grid.Row="14" Height="20" Padding="1,0,7,0"  FontSize="14" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding WvUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding PvUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding UvUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding MWvUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="6" TextWrapping="Wrap" Text="{Binding WhcUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="7" TextWrapping="Wrap" Text="{Binding PhcUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="8" TextWrapping="Wrap" Text="{Binding UhcUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="9" TextWrapping="Wrap" Text="{Binding OhcUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="11" TextWrapping="Wrap" Text="{Binding WwUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="12" TextWrapping="Wrap" Text="{Binding PwUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="13" TextWrapping="Wrap" Text="{Binding UwUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Grid.Column="7" HorizontalAlignment="Center" Margin="0" Grid.Row="14" TextWrapping="Wrap" Text="{Binding OwUnit}" VerticalAlignment="Center" FontSize="15" Foreground="#B3000000" FontWeight="Bold" Width="80" RenderTransformOrigin="0.51,0.188" Height="20"/>
+                <TextBlock Height="25" Foreground="Black" TextWrapping="Wrap" Margin="0" HorizontalAlignment="Left" FontSize="16"><InlineUIContainer>
+						<Image Height="14" Source="/SDTView;component/Shared/ic_vapor.png" Stretch="Fill" Width="12" VerticalAlignment="Center"/>
+					</InlineUIContainer><Run Language="pt-br" Text=" "/><Run Text=" "/><Run FontWeight="Bold" Language="pt-br" Text="Vapor"/></TextBlock>
+
+                <TextBlock Height="29" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" Margin="6,2,48,0" Grid.ColumnSpan="2" Width="170" Grid.RowSpan="2" Grid.Row="5" FontSize="16"><InlineUIContainer>
+						<Image Height="16" Source="/SDTView;component/Shared/ic_hydrocarbon.png" Stretch="Fill" Width="11.826"/>
+					</InlineUIContainer><Run Language="pt-br" Text=" "/><Run Text=" "/><Run FontWeight="Bold" Language="pt-br" Text="Hydrocarbon"/></TextBlock>
+                <TextBlock Height="29" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" Margin="6,2,48,0" Grid.ColumnSpan="2" Width="170" Grid.RowSpan="2" Grid.Row="10" FontSize="16"><InlineUIContainer>
+						<Image Height="16" Source="/SDTView;component/Shared/ic_water.png" Stretch="Fill" Width="11.826"/>
+					</InlineUIContainer><Run Language="pt-br" Text=" "/><Run Text=" "/><Run FontWeight="Bold" Language="pt-br" Text="Water"/></TextBlock>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FF919191" Grid.Row="3" Margin="0,0,0,29"/>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FF919191" Grid.Row="3" Margin="0,29,0,0"/>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FF919191" Grid.Row="7" Margin="0,0,0.333,29"/>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FF919191" Grid.Row="8" Margin="0,0,0.333,29"/>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FF919191" Grid.Row="9" Margin="0,0,0.333,29"/>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FF919191" Grid.Row="12" Margin="0,0,0.333,29"/>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FF919191" Grid.Row="13" Margin="0,0,0.333,29"/>
+                <Rectangle Grid.ColumnSpan="8" Fill="#FF919191" Grid.Row="13" Margin="0,29,0.333,0"/>
+                <Button x:Name="addColumnButton" IsEnabled="{Binding IsEnabledAddColumnButton}" Command="{Binding AddButtonCommand}" FontSize="12" Content="Add Column" Grid.Column="7" HorizontalAlignment="Left" Margin="22.333,-26,0,0" VerticalAlignment="Top" Width="74" Height="21" RenderTransformOrigin="0.649,0.952"/>
+
+            </Grid>
+            <!--Click="enableField"-->
+            <Viewbox Visibility="{Binding VisibilityPopup}" Grid.Column="1" Height="150" Margin="377,30,403,270" VerticalAlignment="Center" Width="300" HorizontalAlignment="Center" IsHitTestVisible="True" Grid.Row="3">           
+                <Border Background="White" BorderBrush="#FFA1A1A1" CornerRadius="5" BorderThickness="1">
+                    <StackPanel Height="150" Width="300">
+                        <Border Background="#FF850000" Margin="5,5,5,0">
+                            <TextBlock Height="29" TextWrapping="Wrap" Margin="10,0,0,0" Foreground="White" FontSize="13.333" HorizontalAlignment="Left" Width="250" VerticalAlignment="Center" Padding="0,4,0,0"><Run Language="pt-br" Text="Copy Data From Case 1"/></TextBlock>
+                        </Border>
+                        <Grid Margin="5,0,5,1" Height="115">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.1*"/>
+                                <RowDefinition Height="0.1*"/>
+                                <RowDefinition Height="0.1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="0.1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Margin="45,26,0,25" TextWrapping="Wrap" Text="{Binding ValueToCopy}" Grid.Column="1" Width="90" HorizontalAlignment="Left" Padding="1,0" VerticalContentAlignment="Center" FontSize="16" Height="25" VerticalAlignment="Center" BorderBrush="#FFA3A3A3" Grid.RowSpan="2"/>
+                            <RadioButton GroupName="Ratio" IsChecked="{Binding Ratio}" Content="%" Margin="12,24,4,29" FontSize="13.333" Grid.RowSpan="2"/>
+                            <RadioButton GroupName="Ratio" IsChecked="{Binding AbsoluteValue}" Content="Absolute" Margin="12,14,4,1" Grid.Row="1" FontSize="13.333"/>
+                            <Button Command="{Binding HidePopupCommand}" Content="Cancel" Margin="0,10,6,5" HorizontalAlignment="Right" Width="94" FontSize="13.333" Padding="1,-2,1,0" Grid.Column="1" Grid.Row="2"/>
+                            <Button Command="{Binding AddCaseAndCopyValuesCommand}" Content="Continue" Margin="0,10,105,5" HorizontalAlignment="Right" Width="94" FontSize="13.333" Padding="1,-2,1,0" Grid.Row="2" Grid.ColumnSpan="2" RenderTransformOrigin="0.067,0.399"/>
+                            <TextBlock Margin="12,2,0,16" TextWrapping="Wrap" Foreground="#FF666666" FontSize="12" HorizontalAlignment="Left" RenderTransformOrigin="0.555,-0.328"><Run Language="pt-br" Text="Mass Flow Value"/></TextBlock>
+                            <Path Data="M529,451.65 L942.0342,451.65" Fill="Black" Margin="10,19,0,0" Stretch="Fill" Stroke="#FF747474" Height="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="274" Grid.ColumnSpan="2"/>
+                            <Path Data="M529,451.65 L942.0342,451.65" Fill="Black" Margin="8,4.373,0,0" Grid.Row="3" Stretch="Fill" Stroke="#FFA3A3A3" Height="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="274" Grid.ColumnSpan="2" d:LayoutOverrides="VerticalAlignment"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Viewbox>
+            <TextBox Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Pressure, UpdateSourceTrigger=LostFocus}" Foreground="#CC373737" FontSize="13.333" Margin="81,21,0,25" HorizontalAlignment="Left" TextAlignment="Right" Width="132" PreviewTextInput="PreviewTextInputEventHandler" DataObject.Pasting="PastingEventHandler" Height="25">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+            <Label x:Name="Units" Content="Units" RenderTransformOrigin="0.595,1.423" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" FontWeight="Bold" Foreground="#FF686060" FontSize="14" Grid.Column="1" Margin="145,6,982,425" Grid.Row="3" />
+            <CheckBox x:Name="chkCase1"  Visibility="{Binding VisibilityChk1}" IsChecked="{Binding IsCheckedChk1}" Content="Case 1" HorizontalAlignment="Left" Margin="231,6,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF686060" FontSize="14" Grid.Column="1" Grid.Row="3"/>
+            <CheckBox x:Name="chkCase2"  Visibility="{Binding VisibilityChk2}" IsChecked="{Binding IsCheckedChk2}" Content="Case 2" HorizontalAlignment="Left" Margin="326,6,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF686060" FontSize="14" Grid.Column="1" Grid.Row="3"/>
+            <CheckBox x:Name="chkCase3"  Visibility="{Binding VisibilityChk3}" IsChecked="{Binding IsCheckedChk3}" Content="Case 3" HorizontalAlignment="Left" Margin="425,6,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF686060" FontSize="14" Grid.Column="1" Grid.Row="3"/>
+            <CheckBox x:Name="chkCase4"  Visibility="{Binding VisibilityChk4}" IsChecked="{Binding IsCheckedChk4}" Content="Case 4" HorizontalAlignment="Left" Margin="520,6,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF686060" FontSize="14" Grid.Column="1" Grid.Row="3"/>
+            <CheckBox x:Name="chkCase5"  Visibility="{Binding VisibilityChk5}" IsChecked="{Binding IsCheckedChk5}" Content="Case 5" HorizontalAlignment="Left" Margin="616,6,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF686060" FontSize="14" Grid.Column="1" Grid.Row="3"/>
+            <!--local:SeparatorGeneralInformationView HorizontalAlignment="Left" Margin="-10,-5,0,0" VerticalAlignment="Top"/-->
+        </Grid>
+
+    </ScrollViewer>
+</UserControl>

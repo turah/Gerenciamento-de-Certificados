@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UnitTable>
+  <Units>
+    <Unit code="1" name="CubicMeterPerSecond " symbol="m3/s" plural="CubicMetersPerSecond "/>
+    <Unit code="2" name="CubicFeetPerSecond" symbol="ft3/s" plural="CubicFeetsPerSecond"/>
+    <Unit code="3" name="CubicMeterPerHour" symbol="m3/h" plural="CubicMetersPerHour"/>
+    <Unit code="4" name="GallonPerMinute" symbol="gpm" plural="GallonsPerMinute"/>
+    
+  </Units>
+  <Conversions>
+    <Linear srcCode="1" destCode="2" factor="35,3146624713"/>
+    <Linear srcCode="1" destCode="3" factor="3600"/>
+    <Linear srcCode="1" destCode="4" factor="15850"/>
+
+    <Linear srcCode="2" destCode="3" factor="101,94066"/>
+    <Linear srcCode="2" destCode="4" factor="448,8"/>
+
+    <Linear srcCode="3" destCode="4" factor="4,403"/>
+  </Conversions>
+</UnitTable>

@@ -1,0 +1,238 @@
+﻿<UserControl x:Class="SDTPresentation.View.SeparatorGeneralInformationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:Enums="clr-namespace:SDTDomainModel.Enums;assembly=SDTDomainModel"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ObjectDataProvider MethodName="GetNames" 
+                            ObjectType="{x:Type System:Enum}" 
+                            x:Key="MeasurementUnitSystem">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enums:MeasurementUnitSystem" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Width="auto" Height="auto">
+        <Grid Width="1200" Height="700">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Path Grid.Column="1" Data="M20,52 L991,52" Fill="#FFF4F4F5" Height="1" Margin="0,0,8,0" Stretch="Fill" Stroke="#FFC2C2C2" VerticalAlignment="Bottom"/>
+            <TextBlock Grid.Column="1" Margin="1,0,0,0" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Bottom" FontWeight="Bold" HorizontalAlignment="Left" Width="296" Height="30"><Run Language="pt-br" Text="CADASTRO ALUNO"/></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" Margin="1,0,0,50" HorizontalAlignment="Left" Width="148"><Run Language="pt-br" Text="NOME DO ALUNO"/></TextBlock>
+            <TextBox MaxLength="100" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="430" Margin="0,0,0,25" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="452,0,0,50" Grid.Row="2" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="288" Height="31" VerticalAlignment="Bottom"><Run Language="pt-br" Text="EMAIL ALUNO"/></TextBlock>
+            <TextBox MaxLength="100" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding EmailAluno, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="288" Margin="452,0,0,25" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="800,0,0,50" Grid.Row="2" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="288" Height="31" VerticalAlignment="Bottom"><Run Language="pt-br" Text="TELEFONE ALUNO"/></TextBlock>
+            <TextBox MaxLength="100" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding TelefoneAluno, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="288" Margin="800,0,0,25" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+
+            <TextBlock Grid.Column="1" Margin="1,1,0,49" Grid.Row="3" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="288"><Run Language="pt-br" Text="TURMA"/></TextBlock>
+            <TextBox MaxLength="150" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Turma, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="107" HorizontalAlignment="Left" Margin="0,0,0,24">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="159,1,0,49" Grid.Row="3" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="288"><Run Language="pt-br" Text="ANO"/></TextBlock>
+            <TextBox MaxLength="150" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Ano, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="112" Margin="150,0,0,24" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.428"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="318,1,0,49" Grid.Row="3" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="288"><Run Language="pt-br" Text="SEMESTRE"/></TextBlock>
+            <TextBox MaxLength="150" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Semestre, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="112" Margin="318,0,0,24" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+
+            <TextBlock Grid.Column="1" Margin="1,0,0,50" Grid.Row="4" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="285"><Run Language="pt-br" Text="NOME DO RESPONSÁVEL 1"/></TextBlock>
+            <TextBox MaxLength="100" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="{Binding Contato, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="430" Margin="0,0,0,25" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="452,0,0,50" Grid.Row="4" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="288"><Run Language="pt-br" Text="EMAIL DO RESPONSÁVEL 1"/></TextBlock>
+            <TextBox MaxLength="100" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="{Binding EmailResponsavel1, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="288" Margin="452,0,0,25" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="800,0,0,50" Grid.Row="4" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="288" Height="21" VerticalAlignment="Bottom"><Run Language="pt-br" Text="TELEFONE RESPONSÁVEL 1"/></TextBlock>
+            <TextBox MaxLength="100" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="{Binding TelefoneResponsavel1, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="288" Margin="800,0,0,25" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+
+
+
+            <TextBlock Grid.Column="1" Margin="0,0,0,50" Grid.Row="5" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="285"><Run Language="pt-br" Text="NOME DO RESPONSÁVEL 2"/></TextBlock>
+            <TextBox MaxLength="100" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="{Binding NomeResponsavel2, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="430" Margin="0,0,0,25" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="452,0,0,50" Grid.Row="5" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="288"><Run Language="pt-br" Text="EMAIL DO RESPONSÁVEL 2"/></TextBlock>
+            <TextBox MaxLength="100" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="{Binding EmailResponsavel2, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="288" Margin="452,0,0,25" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="800,0,0,50" Grid.Row="5" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="288" Height="21" VerticalAlignment="Bottom"><Run Language="pt-br" Text="TELEFONE RESPONSÁVEL 2"/></TextBlock>
+            <TextBox MaxLength="100" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="{Binding TelefoneResponsavel2, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="288" Margin="800,0,0,25" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="0,0,0,50" Grid.Row="6" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="75"><Run Language="pt-br" Text="NOTA 1"/></TextBlock>
+            <TextBox MaxLength="5" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="{Binding Nota1, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,25" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="150,0,0,50" Grid.Row="6" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="72"><Run Language="pt-br" Text="NOTA 2"/></TextBlock>
+            <TextBox MaxLength="5" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="{Binding Nota2, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="75" Margin="150,0,955,25" HorizontalAlignment="Right">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="300,0,0,50" Grid.Row="6" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="75"><Run Language="pt-br" Text="NOTA 3"/></TextBlock>
+            <TextBox MaxLength="5" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="{Binding Nota3, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="75" Margin="300,0,0,25" HorizontalAlignment="Left" RenderTransformOrigin="-0.202,0.46">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Grid.Column="1" Margin="452,0,0,50" Grid.Row="6" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="75"><Run Language="pt-br" Text="MÉDIA"/></TextBlock>
+            <TextBox MaxLength="5" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="{Binding Media, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Height="25" VerticalAlignment="Bottom" Width="75" Margin="452,0,0,25" HorizontalAlignment="Left" RenderTransformOrigin="-0.202,0.46">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+
+            <TextBlock Margin="19,3,0,77" Grid.Row="7" TextWrapping="Wrap" FontSize="12" Foreground="#B3000000" FontWeight="Bold" HorizontalAlignment="Left" Width="288" Grid.ColumnSpan="2"><Run Language="pt-br" Text="STATUS CERTIFICADO"/></TextBlock>
+            <TextBox MaxLength="500" Grid.Column="1" Margin="0,23,0,0" Grid.Row="7" TextWrapping="Wrap" Text="{Binding StatusCertificado, UpdateSourceTrigger=PropertyChanged}" Foreground="#CC373737" FontSize="13.333" Width="1088" HorizontalAlignment="Left">
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.05"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+                        <GradientStop Color="#FFB9B9B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
